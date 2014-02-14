@@ -25,9 +25,11 @@ function! diff#run_diff(realtime, use_external_grep)
   let cmd .= ')'
 
   if a:realtime
-    let diff = system(utility#command_in_directory_of_file(cmd), utility#buffer_contents())
+    "let diff = system(utility#command_in_directory_of_file(cmd), utility#buffer_contents())
+    let diff = '(' . system(utility#command_in_directory_of_file(cmd), utility#buffer_contents()) . ')'
   else
-    let diff = system(utility#command_in_directory_of_file(cmd))
+    "let diff = system(utility#command_in_directory_of_file(cmd))
+    let diff = '(' . system(utility#command_in_directory_of_file(cmd)) . ')'
   endif
 
   if v:shell_error
